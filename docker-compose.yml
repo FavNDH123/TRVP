@@ -1,0 +1,54 @@
+version: "3.8"
+
+networks:
+  backend-db:
+    external: false
+
+volumes:
+  db_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/Nikolay/Desktop/volumes/db
+
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: "${DB__USER}"
+      POSTGRES_PASSWORD: "${DB__PASSWORD}"
+      POSTGRES_DB: "${DB__DATABASE}"
+      PGPORT: "${DB__PORT}"
+    networks:
+     - backend-db
+    ports:
+      - "${DB__PORT}:${DB__PORT}"
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "--quiet", "--port=${DB__PORT}", "--dbname=${DB__DATABASE}", "--username=${DB__USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  backend:
+    build: .
+    environment:
+      APP_BACKEND__HOST: "${APP_BACKEND__HOST}"
+      APP_BACKEND__PORT: "${APP_BACKEND__PORT}"
+      APP_BACKEND__MAX_BOOKS: "${APP_BACKEND__MAX_BOOKS}"
+      DB__HOST: "${DB__HOST}"
+      DB__PORT: "${DB__PORT}"
+      DB__DATABASE: "${DB__DATABASE}"
+      DB__USER: "${DB__USER}"
+      DB__PASSWORD: "${DB__PASSWORD}"
+    networks:
+      - backend-db
+    ports:
+      - "${APP_BACKEND__PORT}:${APP_BACKEND__PORT}"
+    depends_on:
+      db:
+        condition: service_healthy

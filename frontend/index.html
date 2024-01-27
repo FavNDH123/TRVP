@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Библиотека</title>
+
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <header class="app-header container" id="app-header">
+        <div class="row">
+            <div class="app-header__app-name col-auto">
+                <h1 class="display-1 text-start mb-0">
+                    Выдача книг на дом
+                </h1>
+            </div>
+            <div class="user-info col d-inline-flex justify-content-end align-content-lg-stretch">
+                <div class="row">
+                    <div class="user-info__username col-auto d-flex">
+                        <h4 class="display-4 text-end mb-0 align-self-end">
+                            Николай Яценко
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="app-main container" id="app-main">
+        <ul class="flights-list row row-cols-3">
+<!--            <li class="flights-list__item flight col-auto">-->
+<!--                <div class="flights-list__item-1">-->
+<!--                    <div class="flights-list__item-info row">-->
+<!--                        <div class="flights-list__item-info__header row">-->
+<!--                            <span class="flight__id col-8 align-self-end">-->
+<!--                                Яценко Николай Павлович-->
+<!--                            </span>-->
+<!--                            <button type="button" class="flight__edit-btn btn btn-outline-primary col-2 align-self-center">-->
+<!--                                &#10000;-->
+<!--                            </button>-->
+<!--                            <button type="button" class="flight__delete-btn btn btn-outline-danger col-2 align-self-center">-->
+<!--                                &#10008;-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <ul class="flight__tickets-list">-->
+<!--                        <li class="flight__tickets-list-item ticket row">-->
+<!--                            <div class="ticket-info row">-->
+<!--                            <span class="ticket__id col-12 align-self-end">-->
+<!--                                Достоевский Федор Михайлович-->
+<!--                            </span>-->
+<!--                                <span class="ticket__full_name col-12 align-self-end">-->
+<!--                                Преступление и наказание-->
+<!--                            </span>-->
+<!--                            </div>-->
+<!--                            <div class="row justify-content-center">-->
+<!--                                <button type="button" class="ticket__move-btn btn btn-outline-info col-2">-->
+<!--                                    &#8617;-->
+<!--                                </button>-->
+<!--                                <button type="button" class="ticket__delete-btn btn btn-outline-danger col-2">-->
+<!--                                    &#10008;-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <div class="row justify-content-center">-->
+<!--                        <button type="button" class="flight__add-ticket-btn btn btn-outline-primary col-auto">-->
+<!--                            &#10010; Выдать книгу-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+            <li class="col flights-adder-li">
+                <button type="button" class="flights-adder reader-adder btn btn-outline-primary">
+                    &#10010; Добавить читателя
+                </button>
+                <button type="button" class="flights-adder book-adder btn btn-outline-info">
+                    &#10010; Добавить книгу
+                </button>
+                <button type="button" class="flights-adder book-editer btn btn-outline-warning ">
+                    &#10000; Редактировать книгу
+                </button>
+            </li>
+        </ul>
+    </main>
+    <dialog class="app-modal" id="modal-add-flight">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Добавление нового читателя
+            </span>
+            <label for="modal-add-flight-input-id" class="app-modal__entry">
+                ФИО
+            </label>
+            <input type="text" id="modal-add-flight-input-id" class="app-modal__input" required/>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="app-modal" id="modal-edit-flight">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Редактирование ФИО читателя
+            </span>
+            <label for="modal-edit-flight-input-destination" class="app-modal__entry">
+                ФИО
+            </label>
+            <input type="text" id="modal-edit-flight-input-destination" class="app-modal__input"/>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="app-modal" id="modal-delete-flight">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Удаление читателя
+            </span>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog class="app-modal" id="modal-add-ticket">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Выдача книги
+            </span>
+            <label for="modal-add-ticket-input-airplane_id" class="app-modal__entry">
+                Книга
+            </label>
+            <select id="modal-add-ticket-input-airplane_id" class="app-modal__input">
+<!--                <option value="1f26e8e4-bc86-11ee-bdcb-773036f3d3a0"> Достоевский Федор Михайлович - Преступление и наказание</option>-->
+<!--                <option value="17872358-bc93-11ee-b10b-ef3e15384c45"> Толстой Лев Николаевич - Война и мир</option>-->
+            </select>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="app-modal" id="modal-move-ticket">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Передача книги читателю
+            </span>
+            <label for="modal-move-ticket-input-airplane_id" class="app-modal__entry">
+                Читатель
+            </label>
+            <select id="modal-move-ticket-input-airplane_id" class="app-modal__input">
+<!--                <option value="6c409092-b7ec-11ee-8690-d79028b61534"> Яценко Николай Павлович </option>-->
+<!--                <option value="57822792-bc92-11ee-8a86-b36f509c0ff7"> Макаренко Никита Андреевич </option>-->
+            </select>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="app-modal" id="modal-delete-ticket">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Возврат книги
+            </span>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+
+
+    <dialog class="app-modal" id="modal-add-book">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Добавление книги в перечень
+            </span>
+            <label for="modal-add-book-input-author" class="app-modal__entry">
+                ФИО автора
+            </label>
+            <input type="text" id="modal-add-book-input-author" class="app-modal__input" required/>
+            <label for="modal-add-book-input-full_name" class="app-modal__entry">
+                Название
+            </label>
+            <input type="text" id="modal-add-book-input-full_name" class="app-modal__input" required/>
+            <label for="modal-add-book-input-amount" class="app-modal__entry">
+                Количество
+            </label>
+            <input type="number" min="1" id="modal-add-book-input-amount" class="app-modal__input" required/>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="app-modal" id="modal-edit-ticket">
+        <form class="app-modal__form">
+            <span class="app-modal__question">
+                Редактирование книги в перечне
+            </span>
+            <label for="modal-edit-ticket-input-airplane_id" class="app-modal__entry">
+                Книга
+            </label>
+            <select id="modal-edit-ticket-input-airplane_id" class="app-modal__input">
+<!--                <option value="1f26e8e4-bc86-11ee-bdcb-773036f3d3a0"> Достоевский Федор Михайлович - Преступление и наказание</option>-->
+<!--                <option value="17872358-bc93-11ee-b10b-ef3e15384c45"> Толстой Лев Николаевич - Война и мир</option>-->
+            </select>
+            <label for="modal-edit-book-input-author" class="app-modal__entry">
+                ФИО автора
+            </label>
+            <input type="text" id="modal-edit-book-input-author" class="app-modal__input" required/>
+            <label for="modal-edit-book-input-full_name" class="app-modal__entry">
+                Название
+            </label>
+            <input type="text" id="modal-edit-book-input-full_name" class="app-modal__input" required/>
+            <label for="modal-edit-book-input-amount" class="app-modal__entry">
+                Количество
+            </label>
+            <input type="number" min="1" id="modal-edit-book-input-amount" class="app-modal__input" required/>
+            <div class="app-modal__controls">
+                <button type="button" class="app-modal__btn modal-ok-btn"> OK </button>
+                <button type="button" class="app-modal__btn modal-cancel-btn"> Отмена </button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog class="app-notifications" id="app-notifications"></dialog>
+</body>
+</html>

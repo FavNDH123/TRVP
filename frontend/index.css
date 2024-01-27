@@ -1,0 +1,217 @@
+:root {
+    --gradient2: #FFFFFF;
+    --gradient1: #FFE4C4;
+
+    --shadow-color: #00000080;
+
+    --flight-bg-color: #FFFAFA;
+
+    --ticket-bg-color: #FDF5E6 ;
+
+    --flight-text-color: #A0522D;
+
+    --green-color: #15c215;
+    --red-color: #b01e1e;
+}
+
+.container {
+    max-width: 90vw;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(var(--gradient2), var(--gradient1)) center / cover no-repeat;
+}
+
+.app-header {
+    margin-top: 1vw;
+    padding-bottom: 1vh;
+    border-bottom: 2px solid var(--flight-text-color);
+}
+
+.app-header__app-name {
+    color: var(--flight-text-color);
+}
+
+
+.user-info__username {
+    color: var(--flight-text-color);
+}
+
+#app-main {
+    padding-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.flights-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 3vh;
+    column-gap: calc(8% / 3);
+}
+
+.flights-list__item {
+    width: 30%;
+}
+
+.flights-list__item-1 {
+    padding: 1vw 1.2vw;
+    border-radius: 0.5vw;
+    box-shadow: 2px 2px 4px var(--shadow-color);
+    background: var(--flight-bg-color);
+}
+
+.flights-list__item-info__header {
+    padding: unset;
+    margin: auto auto 1vh;
+    max-width: 90%;
+    border-bottom: 2px solid var(--flight-text-color);
+}
+
+.flight__id {
+    padding-left: unset;
+    font-size: xx-large;
+    color: var(--flight-text-color);
+}
+
+.flight__edit-btn, .flight__delete-btn {
+    font-size: xx-large;
+    padding: unset;
+    margin-bottom: 0.3vw;
+    margin-right: 0.2vw;
+    max-width: 15%;
+    width: 3vw;
+    height: 3vw;
+}
+
+.flight__add-ticket-btn {
+    border: none;
+}
+
+.flights-list__item-info__main {
+    margin: auto auto 1vh;
+    padding: unset;
+    max-width: 90%;
+}
+
+.flight__destination, .flight__departure_timestamp, .flight__airplane_name, .flight__airplane_capacity {
+    padding-left: unset;
+    font-size: large;
+}
+
+.flight__tickets-list {
+    padding: unset;
+}
+
+.ticket {
+    margin: auto auto 1vh;
+    padding: 1vh 1vh;
+    width: 90%;
+    border-radius: 0.5vw;
+    box-shadow: 2px 2px 4px var(--shadow-color);
+    background: var(--ticket-bg-color);
+}
+
+.ticket-info {
+    margin: auto auto 1vh;
+}
+
+.ticket__id {
+    font-size: x-large;
+}
+
+.ticket__full_name {
+    font-size: large;
+}
+
+.ticket__edit-btn, .ticket__delete-btn, .ticket__move-btn {
+    font-size: xx-large;
+    padding: unset;
+    width: 3vw;
+    height: 3vw;
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
+}
+
+.flights-adder {
+    width: 100%;
+    margin-bottom: 2vh;
+    height: 10vh;
+    border-radius: 0.5vw;
+    font-size: x-large;
+}
+
+.app-modal[open] {
+    border: none;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.app-modal::backdrop {
+    backdrop-filter: blur(10px);
+}
+
+.app-modal__form {
+    box-sizing: border-box;
+    padding: 2vh;
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.app-modal__input {
+    padding: 0.6vw;
+    border-radius: 0.7vw;
+    font-size: large;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+.app-modal__controls {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.app-modal__btn {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.app-notifications {
+    border: none;
+    right: 0;
+    bottom: 3vw;
+    left: 100vw;
+    transform: translateX(calc(-100% - 3vw));
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.notification {
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+    min-width: 15vh;
+    border-radius: 0.5vw;
+    box-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+.notification_success {
+    background-color: #15c215;
+}
+
+.notification_error {
+    background-color: #b01e1e;
+}

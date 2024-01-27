@@ -1,0 +1,17 @@
+{
+  "name": "trvp",
+  "version": "1.0.0",
+  "description": "Library manager",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev-front": "vite ./frontend",
+    "build-front": "vite build ./frontend",
+    "dev-back": "npm run build-front && node ./backend"
+  },
+  "devDependencies": {
+    "vite": "^5.0.12",
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  }
+}
